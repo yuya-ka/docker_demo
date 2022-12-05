@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
 
+  before_action :set_product, only: :update
+
   def index
     @products = Product.all
 
@@ -16,6 +18,15 @@ class ProductsController < ApplicationController
       end
   end
 
+  def update
+    if @product.update(product_params)
+      render json: @product
+    else
+      render json: @product.errors, status: :unprocessable_entity
+    end
+    
+  end
+
 
 
   private
@@ -23,6 +34,10 @@ class ProductsController < ApplicationController
   def product_params
     params.require(products).permit(:title, :money, :content)
 
+  end
+
+  def set_product
+    @product = Product.find(params[:id])
   end
 
 
