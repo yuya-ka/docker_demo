@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    attributes:
+      product:
+        title: タイトル
+        money: 寄付金額
+        content: 説明
+        
