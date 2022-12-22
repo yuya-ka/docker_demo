@@ -24,6 +24,15 @@ module App
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
 
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins "http://localhost:3000"
+        resource "*",
+          headers: :any,
+          methods: [:get, :post, :patch, :delete, :options, :head]
+      end
+    end
+
     config.i18n.default_locale = :ja
 
     #I18nライブラリに訳文の探索場所を指示する
