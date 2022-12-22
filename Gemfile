@@ -50,3 +50,5 @@ end
 gem 'rails-i18n'
 
 gem 'factory_bot_rails'
+
+gem 'rack-cors'
