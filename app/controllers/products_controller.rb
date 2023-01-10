@@ -31,7 +31,6 @@ class ProductsController < ApplicationController
     else
       render json: @product.errors, status: :unprocessable_entity
     end
-    
   end
 
   def destroy
@@ -44,7 +43,7 @@ class ProductsController < ApplicationController
 
   private
   def product_params
-    params.require(:product).permit(:name, :city, :price, :content)
+    params.require(:product).permit(:name, :city, :price, :content).merge(category_id: params[:category.id])
   end
   def set_product
     @product = Product.find(params[:id])
